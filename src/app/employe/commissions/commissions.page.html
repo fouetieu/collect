@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" >
+   
+    <ion-title>TOTAL COMMISSIONS</ion-title> 
+  </ion-toolbar>
+  <ion-toolbar color="primary">    
+    <ion-label>      
+      <p>
+        <ion-chip>
+          <ion-label class="ion-text-wrap" color="light">
+            XAF{{commissions.solde}}
+          </ion-label>
+        </ion-chip>
+      </p>
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true">
+
+  <ion-list class="transactions">    
+    <ion-item *ngFor="let item of commissions.transactions">
+      <div slot="start" class="transaction-meta">
+        <div class="transaction-type">
+          <img
+            [src]="item.type === 'credit'? '../../../assets/arrow_up.svg' : '../../../assets/arrow_down.svg'"
+          />
+        </div>
+        <div>
+          <ion-label class="transaction-title"> {{item.title}} </ion-label>
+          <span class="transaction-date"
+            >{{item.date}}</span
+          >
+        </div>
+      </div>
+
+      <div class="transaction-amount" slot="end">
+        <span
+          >{{item.type === 'credit'? "" : "-"}}{{format(item?.amount,
+          item.currency)}}
+        </span>
+      </div>
+    </ion-item>
+    <ion-card color="light" *ngIf="commissions.transactions.length === 0">        
+      <ion-card-content>
+        <ion-item lines="none">
+        <ion-icon slot="start" name="alert-circle"></ion-icon>
+        <ion-text> {{'contacts.achats.noGainsFound' | translate}}</ion-text>
+      </ion-item>             
+      </ion-card-content>
+    </ion-card>  
+  </ion-list>  
+</ion-content>

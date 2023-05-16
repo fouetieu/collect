@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="ios">
+    <ion-title>Paramètres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <div class="avatar">
+      <img src="../../../assets/image/avatar-sm.png" />
+      <ion-label> TSAMO PASCAL </ion-label>
+    </div>
+  </section>
+  <section class="settings">
+    <ion-list lines="full" mode="ios">
+      <ion-item>
+        <ion-label class="settings-item" slot="start"> Pin Code </ion-label>
+        <div slot="end" class="setting-right-item">
+          <ion-toggle color="bank-green" checked="true"></ion-toggle>
+        </div>
+      </ion-item>      
+      <ion-item>
+        <ion-label class="settings-item" slot="start">
+          Mot de passe
+        </ion-label>
+        <div slot="end" class="setting-right-item">
+          <span slot="end"> **** </span>
+        </div>
+      </ion-item>
+      <ion-item button>
+      <ion-label class="settings-item" slot="start"> Aide </ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <section class="ion-padding">
+    <div>
+      <ion-button fill="clear" color="bank-green" strong="true" (click)="onLogOut()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-label>Déconnexion</ion-label>
+      </ion-button>
+    </div>
+  </section>
+</ion-content>

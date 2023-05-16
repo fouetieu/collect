@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>   
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Créer un Client</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="onSaveClick()">
+        <ion-icon slot="icon-only" name="save" color="secondary"></ion-icon>
+      </ion-button>     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="header-picture">   
+    <div class="user-picture" [style.background-image]="'url('+picture.cropped+')'">
+      <ion-button color="secondary" shape="circle" (click)="addPhoto()">
+        <ion-icon slot="icon-only" size="small"  name="camera"></ion-icon>
+      </ion-button>     
+    </div>  
+    <ion-label>Ajouter une photo</ion-label>
+  </div>
+  <form [formGroup]="form" class="ion-margin">
+    <ion-list>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>
+            {{"app.clients.create.informations.title" | translate}}
+          </ion-label>
+        </ion-item-divider>
+        <ion-item lines="none">
+          <ion-input  formControlName="nom"  errorText="Le mom est obligatoire"   label="Nom"  label-placement="floating" fill="outline"  placeholder="Saisir le nom"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-input formControlName="telephone" errorText="Le téléphone  est obligatoire" inputmode="numeric"  label="Numéro de Téléphone" label-placement="floating" fill="outline" placeholder="Saisir le numéro de téléphone"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none"> 
+          <ion-input formControlName="cni" errorText="La CNI est obligatoire"  label="CNI" label-placement="floating" fill="outline" placeholder="Saisir la CNI"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none"> 
+          <ion-select  formControlName="sex" label="Genre" label-placement="floating" fill="outline"  placeholder="Selectionnez son genre">
+            <ion-select-option value="M">Masculin</ion-select-option>
+            <ion-select-option value="F">Féminin</ion-select-option>          
+          </ion-select>
+          <ng-container *ngIf="form.get('sex').hasError('required') && (form.get('sex').dirty || form.get('sex').touched)">
+            <div><ion-text color="danger">le Genre est obligatoire</ion-text></div>
+          </ng-container>
+        </ion-item>
+       
+        <ion-item lines="none">
+          <ion-input formControlName="localisation" errorText="La localisation est obligatoire"  label="Localisation" label-placement="floating" fill="outline" placeholder="Saisir la localisation"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input formControlName="activite"  errorText="L'activite est obligatoire" label="Activite" label-placement="floating" fill="outline" placeholder="Saisir l'activite"></ion-input>
+        </ion-item>
+              
+        <ion-item lines="none"> 
+          <ion-input formControlName="email"   errorText="l'adresse mai est invalid"  label="Email" label-placement="floating" fill="outline" placeholder="Saisir l'email"></ion-input>
+        </ion-item>
+        
+      </ion-item-group>
+      
+    </ion-list>
+  </form>
+ 
+</ion-content>

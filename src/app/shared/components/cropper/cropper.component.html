@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">{{"app.close" | translate}}</ion-button>
+    </ion-buttons>
+    <ion-title> {{"app.crop" | translate}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cropImage()">
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-row *ngIf="picture">
+    <ion-col size="6" class="ion-text-center">
+      <ion-button fill="clear" (click)="rotate()">
+        <ion-icon name="refresh" slot="start"></ion-icon> {{"app.rotate" | translate}}
+      </ion-button>
+    </ion-col>
+    <!-- <ion-col size="3" class="ion-text-center">
+      <ion-button fill="clear" (click)="flipHorizontal()"> {{"app.flipx" | translate}} </ion-button>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-button fill="clear" (click)="flipVertical()">  {{"app.flipy" | translate}} </ion-button>
+    </ion-col> -->
+    <ion-col size="6" class="ion-text-center">
+      <ion-button fill="clear" (click)="discardChanges()">  {{"app.discard" | translate}} </ion-button>
+    </ion-col>
+  </ion-row>
+  <image-cropper
+    #cropper
+    [imageBase64]="picture?.base64"
+    [maintainAspectRatio]="false"   
+    [aspectRatio]="1/1"
+    [resizeToWidth]="500"
+    [cropperMinWidth]="256"
+    format="jpeg"
+    [imageQuality]=80
+    backgroundColor="white"
+    [hideResizeSquares]="isMobile"
+    [transform]="transform"
+    [autoCrop]="false"
+    (imageCropped)="imageCropped($event)"
+    (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+   
+</ion-content>

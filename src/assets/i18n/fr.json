@@ -1,0 +1,80 @@
+{  
+  "app":{
+    "title":"CCM Collect",
+    "createAt":"Crée",
+    "updateAt":"Mis à jour",
+    "close":"Fermer",
+    "cancel":"Annuler",
+    "confirm":"Confirmer",
+    "crop":"Retoucher l'image",
+    "rotate":"Rotation",
+    "flipx":"Retourner H",
+    "flipy":"Retourner Y",
+    "discard":"Annuler",
+    "more":"Plus",
+    "signout":"Déconnexion",
+    "aboutus":"A propos",
+    "changepassword":"Changer de mot de passe",
+    "alert":"Alerte",
+    "continuer":"Continuer",
+    "sessionAlert":"Votre session exipre dans {{remainingsecond}}. Voulez-vous continuer?",
+    "selectCustomer":"Selection du Client",
+    "searchCustomerPlaceHolder":"Saisir une partie du nom ou son numéro",
+    "clients": {
+      "title":"CLients",
+      "create":{
+        "title":"Créer un Client",
+        "informations":{
+          "title":"Informations",
+          "name":"Nom",
+          "surname":"Prenom",
+          "phone":"Téléphone",
+          "phone2":"Téléphone 2",
+          "cni":"CNI",
+          "email":"Email",
+          "region":"Region",
+          "ville":"Ville",
+          "quatier":"Quatier",
+          "taille":"Taille",
+          "pointure":"Pointure",
+          "createdDate":"Date Création",
+          "updatedDate":"Date Mise à Jour",
+          "updateBy":"Mis à jour par",
+          "createBy":"Créer par"
+        }
+      }
+    }
+  },
+  "auth":{
+      "signIn":"Connexion",   
+      "signInDescription":"Connectez-vous avec votre numéro de téléphone et votre code pin",
+      "phone":"NUMERO",
+      "phonePlaceHolder":"Entrez votre Numéro",
+      "phoneError":"Erreur de numéro de téléphone",
+      "pin":"PIN",
+      "pinPlaceHolder":"Entrez votre PIN",
+      "pinError":"Erreur de code PIN",
+      "ok":"OK",
+      "signInErrorTitle":"Erreur de Connexion",
+      "signInErrorMsg":"Impossible de vous connecter, reéssayez SVP!"
+  },
+  "error": {
+    "internalServerError": "Erreur interne du serveur",
+    "server.not.reachable": "Serveur inaccessible",
+    "url.not.found": "Non trouvé",
+    "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
+    "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
+    "userexists": "Login déjà utilisé !",
+    "emailexists": "Email déjà utilisé !",
+    "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'identifiant !",
+    "idnull": "Identifiant invalide",
+    "idinvalid": "Invalid Id",
+    "idnotfound": "ID cannot be found",
+    "file": {
+      "could.not.extract": "Impossible d'extraire le fichier",
+      "not.image": "Le fichier doit être une image et non du type \"{{ fileType }}\""
+    }
+  }
+
+
+}

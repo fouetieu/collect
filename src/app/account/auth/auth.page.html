@@ -1,0 +1,79 @@
+
+<ion-content >
+  <div id="header">    
+      <div id="login-bg">
+        <img src="assets/images/login-bg.jpg" alt=""> 
+      </div>     
+      <div id="app-bar">
+          <div id="logo">
+              <img src="assets/images/logo.png" alt="">              
+          </div>         
+      </div>      
+  </div>
+  <div class="wrapper">
+      <ion-card color="light" class="form-wrapper">
+          <ion-card-content>
+
+            <h1>{{"auth.signIn" | translate}}</h1>
+            <p>{{"auth.signInDescription" | translate}}</p>
+           
+            <form [formGroup]="form" class="ion-margin"> 
+             
+                <ion-item lines="none">
+                  <ion-icon name="person"></ion-icon>                  
+                  <ion-input 
+                    type="text"    
+                    label="{{'auth.phone' | translate}}"
+                    labelPlacement="floating"                
+                    errorText="{{'auth.phoneError'| translate}}" 
+                    placeholder="{{'auth.phonePlaceHolder' | translate}}"  
+                    formControlName="phone"  
+                    inputmode="numeric"
+                  ></ion-input> 
+                </ion-item> 
+             
+              
+                <ion-item lines="none">
+                  <ion-icon name="keypad"></ion-icon>    
+                  <ion-icon 
+                    [name]="type ? 'eye' : 'eye-off'" 
+                    slot="end" 
+                    color="dark" 
+                    (click)="changeType()">
+                  </ion-icon>                 
+                  <ion-input  
+                    [type]="type ? 'password' : 'text'"      
+                    label="{{'auth.pin' | translate}}"  
+                    labelPlacement="floating"                    
+                    errorText="{{'auth.pinError' | translate}}"  
+                    placeholder="{{'auth.pinPlaceHolder' | translate}}"  
+                    formControlName="pin" 
+                    inputmode="numeric"                    
+                  ></ion-input>
+                </ion-item>
+              
+              
+            </form>           
+          
+            <ion-button  *ngIf="!isLoading" (click)="onSubmit()"  color="primary" expand="block ">
+              {{"auth.ok" | translate}}
+            </ion-button>
+            <ion-button
+            *ngIf="isLoading"                   
+            expand="block"             
+            color="secondary">
+              <ion-spinner></ion-spinner>
+            </ion-button>
+          </ion-card-content>
+      </ion-card>       
+  </div> 
+ 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-no-border">
+    <p>
+      &copy; 2023 <span>CCM SA</span>
+    </p>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="ios">
+    <ion-title class="ion-no-padding">Transactions</ion-title>
+  </ion-toolbar>
+  <ion-toolbar mode="ios">
+    <ion-segment (ionChange)="handleChange($event)" value="credit" mode="ios">
+      <ion-segment-button value="credit">
+        <ion-label>Versements</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="debit">
+        <ion-label>Retraits</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="commission">
+        <ion-label>Commissions</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="transactions">
+    <ion-list lines="full" mode="ios">
+      <ion-item *ngFor="let item of transactions">
+        <div slot="start" class="transaction-meta">
+          <div class="transaction-type">
+            <img
+              [src]="item.type === 'credit'? '../../../assets/arrow_up.svg' : '../../../assets/arrow_down.svg'"
+            />
+          </div>
+          <div>
+            <ion-label class="transaction-title"> {{item.title}} </ion-label>
+            <span class="transaction-date"
+              >{{item.date }}</span
+            >
+          </div>
+        </div>
+
+        <div class="transaction-amount" slot="end">
+          <span
+            >{{item.type === 'credit'? "" : "-"}}{{format(item?.amount,
+            item.currency)}}
+          </span>
+        </div>
+      </ion-item>
+    </ion-list>
+  </section>
+</ion-content>

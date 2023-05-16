@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" (click)="onGoBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ client?.name }}</ion-title>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appParallax]="img" (ionScroll)="onScroll($event)">
+  <div #img class="header-image" [style.background-image]="'url(' + imageUrl(client) + ')'">
+  </div>
+  <ion-header collapse="condense" class="ion-no-border"> 
+    <ion-toolbar>
+      <ion-title size="large">{{ client?.nom}}</ion-title>
+      <ion-badge color="success" slot="end">{{ client?.matricule }}</ion-badge>
+    </ion-toolbar>  
+  </ion-header>
+  <ion-segment [value]="segmentValue" (ionChange)="segmentChanged($event)" mode="md">
+    <ion-segment-button value="details">
+      <ion-label>Details</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="compte">
+      <ion-label>Compte</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="content-details" *ngIf="segmentValue === 'details'">
+    <ion-list>     
+      <ion-item >
+        <ion-label>
+          <p>Téléphone</p> 
+          <h3>{{client.telephone}}</h3>  
+        </ion-label>       
+      </ion-item>
+      <ion-item >
+        <ion-label>
+          <p>CNI</p> 
+          <h3>{{client.cni}}</h3>  
+        </ion-label>       
+      </ion-item>
+      <ion-item >
+        <ion-label>
+          <p>Sex</p> 
+          <h3>{{client.sex}}</h3>  
+        </ion-label>       
+      </ion-item>
+      <ion-item >
+        <ion-label>
+          <p>Activité</p> 
+          <h3>{{client.activite}}</h3>  
+        </ion-label>       
+      </ion-item>
+      <ion-item >
+        <ion-label>
+          <p>localisation</p> 
+          <h3>{{client.localisation}}</h3>  
+        </ion-label>       
+      </ion-item>
+      
+    </ion-list>
+   </div>
+
+
+   <div class="content-gains transactions" *ngIf="segmentValue === 'compte'">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <ion-note color="medium">
+            SOLDE EN COMPTE
+          </ion-note>
+          <p>
+            <ion-chip color="medium" id="open-modal" >
+              <ion-label class="ion-text-wrap" color="warning">
+                XAF{{compte.solde}}
+              </ion-label>
+              <ion-icon name="add" ></ion-icon>
+            </ion-chip>
+          </p>
+        </ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of compte.transactions">
+        <div slot="start" class="transaction-meta">
+          <div class="transaction-type">
+            <img
+              [src]="item.type === 'credit'? '../../../assets/arrow_up.svg' : '../../../assets/arrow_down.svg'"
+            />
+          </div>
+          <div>
+            <ion-label class="transaction-title"> {{item.title}} </ion-label>
+            <span class="transaction-date"
+              >{{item.date}}</span
+            >
+          </div>
+        </div>
+
+        <div class="transaction-amount" slot="end">
+          <span
+            >{{item.type === 'credit'? "" : "-"}}{{format(item?.amount,
+            item.currency)}}
+          </span>
+        </div>
+      </ion-item>
+      <ion-card color="light" *ngIf="compte.transactions.length === 0">        
+        <ion-card-content>
+          <ion-item lines="none">
+          <ion-icon slot="start" name="alert-circle"></ion-icon>
+          <ion-text> {{'contacts.achats.noGainsFound' | translate}}</ion-text>
+        </ion-item>             
+        </ion-card-content>
+      </ion-card>  
+    </ion-list>
+    <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreGains($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Annuler</ion-button>
+            </ion-buttons>
+            <ion-title>Versement  - {{client?.nom}}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item class="amount">
+            <ion-label position="stacked">Montant</ion-label>
+            <ion-input type="text" placeholder="Montant à verser" [(ngModel)]="amount"></ion-input>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+   </div>
+
+   
+ 
+</ion-content>

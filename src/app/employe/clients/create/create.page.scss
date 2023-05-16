@@ -1,0 +1,108 @@
+ion-content{
+    div.header-picture{
+        text-align: center;
+        margin-top: 5px;
+        div.user-picture{
+            margin: 0 auto;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto; 
+            border-radius: 50%;
+            position: relative;   
+            background-color: var(--ion-color-medium);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+            background-attachment: fixed;
+            text-align: center;
+            /*
+            ion-button[shape=circle]{               
+                position: absolute;
+                right:0;
+                top:50%;
+                width: 30px;
+                height: 30px;
+                padding: 5px !important;                  
+                --border-radius: 50%;
+            } */
+            ion-button::part(native) {
+                position: absolute;
+                right:0;
+                top:50%;
+                width: 35px;
+                height: 35px;
+                padding: 0 !important;
+                --padding: 0 !important;
+                border-radius: 100% !important;
+                border: 3px solid #fff;
+            }                           
+        }
+    }
+
+    ion-list{
+        padding: 0px !important;
+        ion-item-group{
+            padding: 0px !important;
+            margin-top: 15px;
+        }
+
+        ion-item{
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+    }
+    ion-row{        
+        swiper-container {
+            swiper-slide {
+                display:block;
+                position: relative;
+                border-radius: 15px; 
+                box-sizing: border-box;  
+                &.tertiary{
+                    background-color: var(--ion-color-tertiary);
+                }
+                &.success{
+                    background-color: var(--ion-color-success);
+                }
+                &.warning{
+                    background-color: var(--ion-color-warning);
+                }
+                &.secondary{
+                    background-color: var(--ion-color-secondary);
+                }
+                &.medium{
+                    background-color: var(--ion-color-medium);
+                } 
+                &.primary{
+                    background-color: var(--ion-color-primary);
+                }
+                div.profile{                                              
+                    height: 100px;   
+                    background-position-x: right;
+                    background-position-y: bottom;
+                    background-repeat: no-repeat;   
+                    opacity: 0.5;  
+                    &.active{
+                        opacity: 1; 
+                    } 
+                }
+
+                ion-label{
+                    position: absolute;
+                    font-size: 14px;
+                    color:white;
+                    top: 2px;
+                    left: 10px
+                }
+                /*
+                img {
+                    width: auto;
+                    max-width: 100%;
+                    height: auto;
+                    max-height: 100%;           
+                }*/
+            }
+        }
+    }
+    
+}

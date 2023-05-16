@@ -1,0 +1,24 @@
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom" mode="ios">
+    <ion-tab-button tab="home">
+      <ion-icon
+        [color]="currentTab === 'home' ? 'secondary' : 'ligth'"
+        [name]="currentTab === 'home' ? 'home' : 'home-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="transactions">
+      <ion-icon
+        [color]="currentTab === 'transactions' ? 'secondary' : 'ligth'"
+        [name]="currentTab === 'transactions' ? 'pie-chart' : 'pie-chart-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon
+        [color]="currentTab === 'settings' ? 'secondary' : 'ligth'"
+        [name]="currentTab === 'settings' ? 'settings' : 'settings-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

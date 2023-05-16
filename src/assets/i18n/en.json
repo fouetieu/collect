@@ -1,0 +1,19 @@
+{ 
+  "app":{
+    "title":"Multiflex Caller"
+  },
+  "auth":{
+    "signIn":"Sign In",
+    "signInDescription":"Log in with your phone number and pin code",
+    "phone":"NUMBER",
+    "phoneError":"Phone Number error",
+    "pin":"PIN",
+    "pinError":"PIN error",
+    "ok":"OK",
+    "signInErrorTitle":"Authentication Failed",
+    "signInErrorMsg":"Could not sign you in, please try again"
+  },
+  "contacts":{
+    "title":"Contacts"
+  }
+}

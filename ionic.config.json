@@ -1,0 +1,7 @@
+{
+  "name": "CCMCollect",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

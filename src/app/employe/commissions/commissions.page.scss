@@ -1,0 +1,131 @@
+ion-header{
+    ion-toolbar{       
+        text-align: center;
+        ion-label {
+            margin: 0px;
+            ion-note {
+                font-size: 0.7rem;
+            }
+            ion-chip {
+                background: var(--ion-color-secondary) !important; 
+                --background: var(--ion-color-secondary) !important; 
+                ion-label {
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                    letter-spacing: 0.5px;
+                }
+            }
+            b {
+                font-size: 1.2rem;
+            }
+            }
+    
+    }
+}
+
+ion-list{
+    padding: 5px;
+    
+    ion-item{        
+        ion-row{
+            padding-top : 5px;
+            padding-bottom : 5px;
+            ion-col{
+                padding-top : 2px;
+                padding-bottom : 2px;
+                p{
+                    padding: 0px;
+                    margin:0px;
+                }
+                &.details{
+                    p{
+                        font-size: 0.8em;
+                    }
+                    ion-text{
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    }
+    ion-card{
+        padding: 0 !important;
+        ion-card-content{
+          padding: 0 !important;
+          box-shadow:none !important;
+          ion-item{
+            background: transparent;
+            --background:transparent;
+          }
+        }
+
+    }
+}
+
+
+.transactions {
+    min-height: 20rem;
+    
+    z-index: 1;
+    background: #ffffff; /*var(--bg-hi);*/
+    border-radius: 3.12rem 3.12rem 0 0;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  
+    .transaction-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: -1.3rem;
+  
+      .transaction-type {
+        width: 2.6rem;
+        height: 2.6rem;
+        background: #ffffff;
+        box-shadow: 0px 3px 6px rgb(3 181 170 / 4%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+      }
+    }
+  
+    .list-title,
+    .transaction-title,
+    .transaction-amount {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-green);
+    }
+  
+    .list-title {
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .transaction-title,
+    .transaction-amount {
+      color: var(--lo-green);
+    }
+  
+    .transaction-amount {
+      font-size: 1rem;
+    }
+  
+    .transaction-date {
+      color: var(--text-green);
+      font-size: 0.9rem;
+    }
+  
+    ion-list {
+      --ion-item-background: transparent;
+      ion-item {
+        --border-style: dashed;
+        --border-color: var(--mid-green);
+        --padding-bottom: 1rem;
+        --padding-top: 1rem;
+      }
+    }
+  }

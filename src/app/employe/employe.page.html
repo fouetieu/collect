@@ -1,0 +1,31 @@
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom" mode="ios">
+    <ion-tab-button tab="dashboard">
+      <ion-icon
+        [color]="currentTab === 'dashboard' ? 'primary': 'light'"
+        [name]="currentTab === 'dashboard' ? 'home' : 'home-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="clients">
+      <ion-icon
+        [color]="currentTab === 'clients' ? 'primary': 'light'"
+        [name]="currentTab === 'clients' ? 'people' : 'people-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="commissions">
+      <ion-icon
+        [color]="currentTab === 'commissions' ? 'primary': 'light'"
+        [name]="currentTab === 'commissions' ? 'pie-chart' : 'pie-chart-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon
+        [color]="currentTab === 'settings' ? 'primary': 'light'"
+        [name]="currentTab === 'settings' ? 'settings' : 'settings-outline'"
+      ></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

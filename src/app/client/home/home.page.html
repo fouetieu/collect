@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" >
+    <div class="ion-padding-start welcome-header">
+      <span>Bienvenue</span>
+      <ion-title class="ion-no-padding">TSAMO PASCAL
+      </ion-title>
+    </div>
+
+    <div slot="end" mode="ios" class="ion-padding-end avatar">
+      <img src="../../../assets/image/avatar-sm.png" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="accounts">
+    <div class="neo-swiper-holder">
+      <swiper-container 
+          #swiper
+
+          [keyboard]="true"
+          [pagination]="true"
+          [scrollbar]="true"
+          [modules]="swiperModules"
+          [slidesPerView]="1"  
+          [spaceBetween]="10"
+          class="neo-slider"
+          
+        >
+          <swiper-slide *ngFor="let slide of slides">
+            <div class="account-card">
+              <div class="account-card_inner">
+                <span class="account-title">{{slide.title}}</span>
+                <p class="account-balance">
+                  {{format(slide.balance, slide.currency)}}
+                </p>
+                <span class="account-number">{{slide.account}}</span>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+    </div>
+    
+  </section>
+
+  <section class="transactions">
+    <ion-label class="list-title"> 05 Dernières Transactions </ion-label>
+
+    <ion-list lines="full" mode="ios">
+      <ion-item *ngFor="let item of transactions">
+        <div slot="start" class="transaction-meta">
+          <div class="transaction-type">
+            <img
+              [src]="item.type === 'credit'? '../../../assets/arrow_up.svg' : '../../../assets/arrow_down.svg'"
+            />
+          </div>
+          <div>
+            <ion-label class="transaction-title"> {{item.title}} </ion-label>
+            <span class="transaction-date"
+              >{{item.date}}</span
+            >
+          </div>
+        </div>
+
+        <div class="transaction-amount" slot="end">
+          <span
+            >{{item.type === 'credit'? "" : "-"}}{{format(item?.amount,
+            item.currency)}}
+          </span>
+        </div>
+      </ion-item>
+    </ion-list>
+  </section>
+  <!-- <div class="bottom-list"></div> -->
+</ion-content>
