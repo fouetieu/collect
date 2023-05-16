@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CCMCollect</string>
+    <string name="title_activity_main">CCMCollect</string>
+    <string name="package_name">her.tech.CCMCollect</string>
+    <string name="custom_url_scheme">her.tech.CCMCollect</string>
+</resources>

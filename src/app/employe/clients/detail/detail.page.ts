@@ -20,48 +20,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 export class DetailPage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
   amount: number;
-  compte = {
-    solde : 47286,
-    transactions: [
-      {
-        title: 'Commission',
-        date: '01/02/2023',
-        amount: 1262,
-        type: 'debit',
-        currency: 'XAF'
-      },
-      {
-        title: 'Retrait',
-        date: '28/01/2023',
-        amount: 25000,
-        type: 'debit',
-        currency: 'XAF',
-      },
-      {
-        title: 'Versement',
-        date: '14/01/2023',
-        amount: 2000,
-        type: 'credit',
-        currency: 'XAF',
-      },
-      {
-        title: 'Versement',
-        date: '04/01/2023',
-        amount: 2000,
-        type: 'credit',
-        currency: 'XAF',
-      },
-      {
-        title: 'Versement',
-        date: '03/01/2023',
-        amount: 2000,
-        type: 'credit',
-        currency: 'XAF',
-      }        
-      
-    ]
-  }
-
+  compte : any | null = null; 
   @ViewChild(IonContent) content: IonContent;
   client: any | null = null;
   segmentValue="details";
@@ -89,6 +48,13 @@ export class DetailPage implements OnInit {
       const clientFilter = clients.filter(c=> c.id === clientId);
       this.client = clientFilter[0];
     });
+
+    this.state.getCompte().subscribe(
+      (res)=>{
+        console.log(res);
+        this.compte = res;
+      }
+    )
     
     const headerHeight = isPlatform('ios') ? 44 : 56;
     this.document.documentElement.style.setProperty('--header-position', `calc(env(safe-area-inset-top) + ${headerHeight}px)`)
@@ -146,6 +112,7 @@ export class DetailPage implements OnInit {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
       console.log( `Montant  , ${ev.detail.data}!`);
+      this.state.versement(+ev.detail.data);
     }
   }
 

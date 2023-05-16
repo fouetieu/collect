@@ -6,6 +6,48 @@ import { AppPhoto } from 'src/app/shared/models/photo.model';
   providedIn: 'root'
 })
 export class StateService {
+  compte$= new BehaviorSubject<any>({
+    solde : 31162,
+    transactions: [
+      {
+        title: 'Commission',
+        date: '01/02/2023',
+        amount: 1262,
+        type: 'commission',
+        currency: 'XAF'
+      },
+      {
+        title: 'Retrait',
+        date: '28/01/2023',
+        amount: 25000,
+        type: 'debit',
+        currency: 'XAF',
+      },
+      {
+        title: 'Versement',
+        date: '14/01/2023',
+        amount: 2000,
+        type: 'credit',
+        currency: 'XAF',
+      },
+      {
+        title: 'Versement',
+        date: '04/01/2023',
+        amount: 2000,
+        type: 'credit',
+        currency: 'XAF',
+      },
+      {
+        title: 'Versement',
+        date: '03/01/2023',
+        amount: 2000,
+        type: 'credit',
+        currency: 'XAF',
+      }        
+      
+    ]
+  });
+
   clients$ = new BehaviorSubject<any[]>([
     {
       "id": 1,
@@ -1965,6 +2007,9 @@ export class StateService {
     }
    ]);
 
+  getCompte(){
+    return this.compte$.asObservable();
+  }
   getClients(){
     return this.clients$.asObservable();
   }
@@ -1974,5 +2019,30 @@ export class StateService {
   addClient(client: any, photo: AppPhoto){
     const clients = [{...client, photo: photo.cropped}, ...this.clients$.getValue()];
     this.clients$.next(clients);
+  }
+
+  versement(amount: number){  
+    const d = new Date();
+    const versement = {
+      title: 'Versement',
+      date: d.toDateString(),
+      amount: amount,
+      type: 'credit',
+      currency: 'XAF',
+    };
+
+    var compte = this.compte$.getValue();
+    var solde = 0;
+    compte.transactions.forEach(t => {
+      solde += t.amount;
+    });
+
+    const newCompte = {
+      ...compte,
+      solde : solde,
+      transactions: [versement, ...compte.transactions]
+    }
+
+    this.compte$.next(newCompte);
   }
 }

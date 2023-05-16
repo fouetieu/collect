@@ -16,8 +16,8 @@ import { StateService } from 'src/app/core/services/state.service';
 export class ClientsPage implements OnInit {
 
   clientsRepository?: any[] = [];
-  
   clients?: any[] =[];
+
   isLoading = false;
   totalItems = 0;
   limit=50;
@@ -32,15 +32,15 @@ export class ClientsPage implements OnInit {
     private route: ActivatedRoute,
     private menu: MenuController,
     private state: StateService
-  ){   
-   
+  ){
+
   }
 
   //load customer
   loadClients(event?:any):void{
     this.isLoading = true;
     setTimeout(
-      ()=>{
+      () => {
         this.isLoading = false;
         //const filterClients = this.clientsRepository.filter(c=>c.nom !== "");
         
@@ -87,30 +87,25 @@ export class ClientsPage implements OnInit {
         this.clients = [];
         this.loadClients();
       }
-    )  
+    );  
   }
 
-  ionViewWillEnter(){
- 
-    console.log("ionViewWillEnter" + this.page);
-    
+  ionViewWillEnter(){ 
+    console.log("ionViewWillEnter" + this.page);    
   }
   
-  
- 
+   
   edit(client: any) {  
     this.router.navigate([client.id, 'detail'], { relativeTo: this.route });
   }
 
-  depot(client: any) {  
-    
+  depot(client: any) {      
   }
 
 
   onLogOut(){
     console.log('Logging out');
   }
-  
 
 
   onGoToCreate(){   

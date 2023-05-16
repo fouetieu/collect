@@ -24,7 +24,7 @@ export class DashboardPage implements OnInit {
   
   features: any[] = [
     {id: 1, name: 'Ajouter un Client', src: 'assets/icons/add-user.png', background: 'rgba(255,178,102, 0.1)', page: 'clients/create'},
-    {id: 1, name: 'Faire un versement', src: 'assets/icons/credit.png', background: 'rgba(255,178,102, 0.1)', page: 'clients'}
+    {id: 1, name: 'Enregistrer un versement', src: 'assets/icons/credit.png', background: 'rgba(255,178,102, 0.1)', page: 'clients'}
   ];
 
   
